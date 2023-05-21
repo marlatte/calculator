@@ -1,0 +1,22 @@
+footer {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: auto 0 8px;
+	text-align: center;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+	#my-name {
+			font-weight: bold;
+		}
+
+	.fa-github {
+		color: black;
+	}
+
+	.fa-github:hover {
+		color: black;
+		transition: transform 0.4s ease-in-out;
+		transform: rotate(-360deg) scale(1.3);
+	}
