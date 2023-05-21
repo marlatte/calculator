@@ -31,4 +31,4 @@ function testCalculations() {
 		console.log(`The ${operators.word[chooser]} ${randA} and ${randB} is ${operate(`${randA} ${operators.symbol[chooser]} ${randB}`)}`);
 	};
 }
-testCalculations();
+// testCalculations();
