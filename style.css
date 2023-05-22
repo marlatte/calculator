@@ -21,7 +21,7 @@ body {
 	height: 100vh;
 	margin: unset;
 	padding: 0 8px;
-	background-color: gray;
+	background-color: darkgray;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 /* ------------------ Header ------------------ */
@@ -140,8 +140,9 @@ main {
 	background-color: black;
 	height: 450px;
 	width: 300px;
+	border: 4px outset gray;
 	border-radius: 10px;
-	box-shadow: 1px 1px 20px 2px #393939;
+	box-shadow: 4px 4px 13px 2px #393939;
 }
 
 #screen {

@@ -25,11 +25,12 @@ function fireButton(button) {
 
 		case "invert":
 			console.log("I'm gonna invert someday!");
-			// lastNumber *= -1;
+			// activeNum *= -1;
 			break;
 
 		case "percent":
 			console.log("I'm gonna make a percent someday!");
+			// activeNum / 100
 			break;
 
 		case "equals":
@@ -76,7 +77,7 @@ function operate(str) {
 	};
 
 	if (!methods[opr] || isNaN(a) || isNaN(b)) {
-		return NaN;
+		return "Nope";
 	}
 	const answer = methods[opr](a, b);
 	return +(answer + Number.EPSILON).toFixed(5);
