@@ -1,6 +1,6 @@
-*:not(body, html) {
+/* *:not(body, html) {
 	border: 1px solid red;
-}
+} */
 
 /* ----------------------------------------------- */
 /* ------------------ Utilities ------------------ */
@@ -13,19 +13,6 @@
 	flex-direction: column;
 }
 
-.jcent {
-	justify-content: center;
-}
-
-.acent {
-	align-items: center;
-}
-
-.wrap {
-	flex-wrap: wrap;
-}
-
-
 /* --------------------------------------------- */
 /* ------------------ Regular ------------------ */
 /* --------------------------------------------- */
@@ -34,42 +21,203 @@ body {
 	height: 100vh;
 	margin: unset;
 	padding: 0 8px;
+	background-color: gray;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 /* ------------------ Header ------------------ */
-
-/* ------------------ Main ------------------ */
-#calc-container {
-	background-color: gray;
-	height: 400px;
-	width: 300px;
-
+header {
+	justify-content: space-between;
 }
 
-	#screen {
-		justify-content: flex-end;
-		background-color: lightcyan;
-		margin: 10px;
-		padding: 15px 10px;
-		font-family: 'Courier New', Courier, monospace;
+	h1 {
+		all: unset;
+		font-size: 2em;
 		font-weight: 700;
-		font-size: 25px;
+		margin: 20px;
 	}
 
-		#screen p {
-		margin: unset;
-		}
-	
-	#button-container {
-		padding: 10px;
+	/* .dark{
+		background-color: black;
 	}
+
+	.dark button{
+		background-color: #37474F;
+		color: #cccccc;
+		border-color: #cccccc;
+	}
+
+	.dark h1{
+		color: #cccccc;
+	}
+
+	.dark .calculator{
+		background-color: black;
+		color: #cccccc;
+		border: 5px solid #cccccc;
+	}
+
+	.dark .display{
+		background-color: #37474F;
+		color: #cccccc;
+	}
+
+	.dark .lightdark{
+		color: #cccccc
+	} */
+
+	#dark-mode {
+		align-items: center;
+		font-size: 20px;
+		gap: 25px;
+		margin: 10px;
+	}
+
+	.switch {
+		position: relative;
+		display: inline-block;
+		height: 60px;
+		width: 34px;
+	}
+	
+	.switch input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+	
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: white;
+		-webkit-transition: .4s;
+		transition: .4s;
+	}
+	
+	.slider:before {
+		position: absolute;
+		content: "";
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: rgb(255 171 0);
+		-webkit-transition: .4s;
+		transition: .4s;
+	}
+	
+	input:checked + .slider {
+		background-color: #37474F;
+	}
+	
+	input:focus + .slider {
+		box-shadow: 0 0 1px #37474F;
+	}
+	
+	input:checked + .slider:before {
+		-webkit-transform: translateY(-26px);
+		-ms-transform: translateY(-26px);
+		transform: translateY(-26px);
+	}
+	
+	.slider.round {
+		border-radius: 34px;
+	}
+	
+	.slider.round:before {
+		border-radius: 50%;
+	}
+
+/* ------------------ Main ------------------ */
+main {
+	justify-content: center;
+}
+#calculator {
+	justify-content: space-between;
+	background-color: black;
+	height: 450px;
+	width: 300px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 20px 2px #393939;
+}
+
+#screen {
+	justify-content: flex-end;
+	align-items: center;
+	background-color: #c9f8f8;
+	height: 100px;
+	margin: 10px;
+	padding: 0 10px;
+	font-size: 38px;
+}
+
+	#screen p {
+	margin: unset;
+	}
+
+#button-container {
+	justify-content: space-between;
+	height: 100%;
+	padding: 10px 15px;
+}
+
+	.button-row {
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#button-container .button-row :last-child {
+		background-color: rgb(255 171 0);
+		color: white;
+		font-size: 30px;
+	}
+
+	#button-container .button-row :last-child:hover {
+		background-color: rgb(250, 192, 76);
+	}
+
+		.button {
+			justify-content: center;
+			align-items: center;
+			background-color: rgb(81, 81, 81);
+			color: white;
+			border-radius: 50px;
+			width: 60px;
+			height: 60px;
+			font-size: 25px;
+			font-weight: 700;
+		}
+
+		.button:hover {
+			background-color: rgb(113, 113, 113);
+			scale: 1.02;
+			transition: 0.2s;
+		}
+
+		#rowAC .button {
+			background-color: rgb(206, 206, 206);
+			color: black;
+		}
+
+		#rowAC .button:hover {
+			background-color: rgb(236, 236, 236);
+		}
+		
+		#zero {
+			width: 130px;
+		}
+		
 
 /* ------------------ Footer ------------------ */
 footer {
+	justify-content: center;
 	align-items: center;
 	gap: 10px;
 	margin-bottom: 8px;
 	text-align: center;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 	#my-name {
