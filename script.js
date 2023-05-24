@@ -1,5 +1,5 @@
-let activeNum = document.querySelector("#active-num");
-let expression = document.querySelector("#expression");
+const activeNum = document.querySelector("#active-num");
+const expression = document.querySelector("#expression");
 
 const clearBtn = document.querySelector("#clear");
 const invertBtn = document.querySelector("#invert");
@@ -8,6 +8,8 @@ const divideBtn = document.querySelector("#divide");
 
 let errorMessage = "Nope";
 let fixedLimit = 10;
+
+const OPERATORS = ["÷", "×", "–", "+"]
 
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {
@@ -35,15 +37,15 @@ function fireButton(button) {
 			break;
 
 		case "equals":
-			expression.textContent += activeNum.textContent;
-			activeNum.textContent = operate(expression.textContent);
+			runEquals();
 			break;
 
 		case "divide":
 		case "multiply":
 		case "subtract":
 		case "add":
-			// need to run operation if there are in fact 2 numbers to operate on.
+			fireOperator(button);
+			break;
 	
 		default:
 			if (activeNum.textContent === "0" || 
@@ -56,21 +58,23 @@ function fireButton(button) {
 	};
 }
 
+function runEquals() {
+	expression.textContent += activeNum.textContent;
+	activeNum.textContent = operate(expression.textContent);
+}
+
 function updateActiveNum(value) {
-	switch (value) {
-		case "÷":
-		case "×":
-		case "–":
-		case "+":
-			expression.textContent = "";
-			expression.textContent += `${activeNum.textContent} ${value} `;
-			activeNum.textContent = "0";
-			break;
-	
-		default:
-			activeNum.textContent += value
-			break;
-	}
+	activeNum.textContent += value
+}
+
+function updateExpression(value) {
+	expression.textContent = "";
+	expression.textContent += `${activeNum.textContent} ${value} `;
+	activeNum.textContent = "0";
+}
+
+function checkHalfClear() {
+	return clearBtn.textContent === "C";
 }
 
 function allClear() {
@@ -105,9 +109,18 @@ function operate(str) {
 	return +(answer + Number.EPSILON).toFixed(fixedLimit);
 }
 
-function checkHalfClear() {
-	return clearBtn.textContent === "C";
+function fireOperator(button) {
+	const operatorPresent = OPERATORS.some(operator => {
+		return expression.textContent.includes(operator)
+	});
+	const bIsEmpty = expression.textContent.split(" ").includes("");
+	if (bIsEmpty && operatorPresent) {
+		runEquals();
+	} else {
+		updateExpression(button.textContent);
+	}
 }
+
 
 // function testCalculations() {
 // 	for (let index = 0; index < 10; index++) {
