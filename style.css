@@ -38,31 +38,21 @@ header {
 
 	/* .dark{
 		background-color: black;
+		color: #cccccc;
 	}
 
-	.dark button{
+	.dark .button{
 		background-color: #37474F;
-		color: #cccccc;
 		border-color: #cccccc;
-	}
-
-	.dark h1{
-		color: #cccccc;
 	}
 
 	.dark .calculator{
 		background-color: black;
-		color: #cccccc;
 		border: 5px solid #cccccc;
 	}
 
 	.dark .display{
 		background-color: #37474F;
-		color: #cccccc;
-	}
-
-	.dark .lightdark{
-		color: #cccccc
 	} */
 
 	#dark-mode {
@@ -138,7 +128,7 @@ main {
 #calculator {
 	justify-content: space-between;
 	background-color: black;
-	height: 450px;
+	height: 460px;
 	width: 300px;
 	border: 4px outset gray;
 	border-radius: 10px;
@@ -146,17 +136,22 @@ main {
 }
 
 #screen {
-	justify-content: flex-end;
-	align-items: center;
+	justify-content: center;
 	background-color: #c9f8f8;
-	height: 100px;
+	height: 110px;
 	margin: 10px;
 	padding: 0 10px;
-	font-size: 38px;
 }
 
-	#screen p {
-	margin: unset;
+	#expression {
+		height: 30px;
+		padding-left: 10px;
+		font-size: 25px;
+	}
+	#active-num {
+		align-self: flex-end;
+		height: 45px;
+		font-size: 38px;
 	}
 
 #button-container {

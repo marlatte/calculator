@@ -1,9 +1,13 @@
-let onScreen = document.querySelector("#screen");
+let activeNum = document.querySelector("#active-num");
+let expression = document.querySelector("#expression");
 
-const clearScreenBtn = document.querySelector("#clear");
+const clearBtn = document.querySelector("#clear");
 const invertBtn = document.querySelector("#invert");
 const percentBtn = document.querySelector("#percent");
 const divideBtn = document.querySelector("#divide");
+
+let errorMessage = "Nope";
+let fixedLimit = 10;
 
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {
@@ -14,53 +18,70 @@ function fireButton(button) {
 	console.log(button.id);
 	switch (button.id) {
 		case "clear":
-			// IF onScreen ends in " 0"
-			allClear();
-			/*
-			ELSE
-				halfClear();
-					Replace final digits with "0"
-			*/
+			checkHalfClear() ? halfClear() : allClear();
 			break;
 
 		case "invert":
-			console.log("I'm gonna invert someday!");
-			// activeNum *= -1;
+			activeNum.textContent = +(activeNum.textContent * -1).toFixed(fixedLimit);
+			break;
+			
+			case "percent":
+			activeNum.textContent = +(activeNum.textContent / 100).toFixed(fixedLimit);
 			break;
 
-		case "percent":
-			console.log("I'm gonna make a percent someday!");
-			// activeNum / 100
+		case "decimal":
+			clearBtn.textContent = "C";
+			updateActiveNum(button.textContent);
 			break;
 
 		case "equals":
-			onScreen.textContent = operate(onScreen.textContent);
+			expression.textContent += activeNum.textContent;
+			activeNum.textContent = operate(expression.textContent);
 			break;
+
+		case "divide":
+		case "multiply":
+		case "subtract":
+		case "add":
+			// need to run operation if there are in fact 2 numbers to operate on.
 	
 		default:
-			if (onScreen.textContent === "0") onScreen.textContent = "";
-			updateScreen(button.textContent)
+			if (activeNum.textContent === "0" || 
+				activeNum.textContent === errorMessage) {
+					activeNum.textContent = "";
+			}
+			clearBtn.textContent = "C";
+			updateActiveNum(button.textContent);
 			break;
 	};
 }
 
-function updateScreen(value) {
+function updateActiveNum(value) {
 	switch (value) {
 		case "÷":
 		case "×":
 		case "–":
 		case "+":
-			onScreen.textContent += " " + value + " "
+			expression.textContent = "";
+			expression.textContent += `${activeNum.textContent} ${value} `;
+			activeNum.textContent = "0";
 			break;
 	
 		default:
-			onScreen.textContent += value
+			activeNum.textContent += value
 			break;
 	}
 }
 
 function allClear() {
-	onScreen.textContent = "0";
+	activeNum.textContent = "0";
+	expression.textContent = "";
+	clearBtn.textContent = "AC";
+}
+
+function halfClear() {
+	activeNum.textContent = "0";
+	clearBtn.textContent = "AC";
 }
 
 function operate(str) {
@@ -77,10 +98,15 @@ function operate(str) {
 	};
 
 	if (!methods[opr] || isNaN(a) || isNaN(b)) {
-		return "Nope";
+		expression.textContent = "";
+		return errorMessage;
 	}
 	const answer = methods[opr](a, b);
-	return +(answer + Number.EPSILON).toFixed(5);
+	return +(answer + Number.EPSILON).toFixed(fixedLimit);
+}
+
+function checkHalfClear() {
+	return clearBtn.textContent === "C";
 }
 
 // function testCalculations() {
