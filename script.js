@@ -1,65 +1,140 @@
 const activeNum = document.querySelector("#active-num");
 const expression = document.querySelector("#expression");
-
 const clearBtn = document.querySelector("#clear");
-const invertBtn = document.querySelector("#invert");
-const percentBtn = document.querySelector("#percent");
-const divideBtn = document.querySelector("#divide");
 
-let errorMessage = "Nope";
 let fixedLimit = 10;
 
 const OPERATORS = ["÷", "×", "–", "+"]
 
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {
-	button.addEventListener("click", () => fireButton(button));
+	button.addEventListener("click", () => 	calculate(button.textContent));
 });
 
-function fireButton(button) {
-	console.log(button.id);
-	switch (button.id) {
-		case "clear":
+window.addEventListener("keydown", (e) => {
+	if (e.key === "Backspace") {
+		backspaceActiveNum();
+	} else if (e.key === "Enter") {
+		calculate("=");
+	} else if (e.key.length > 1) {
+		return;	// Weed out keys like "Shift", "Meta", etc.
+	}
+	else if (parseInt(e.key)) {
+		calculate(e.key); // If it's a number, go straight to calculating.
+	} else {
+		const buttonFromKey = convertKeyToButtonText(e.key)
+		if (buttonFromKey) { // If it's a letter/symbol, check if it's on the list.
+			calculate(buttonFromKey);
+		}
+	}
+});
+
+function backspaceActiveNum() {
+	activeNum.textContent = activeNum.textContent.slice(0, -1);
+	if (activeNum.textContent === "") {
+		halfClear();
+	}
+}
+
+function convertKeyToButtonText(eventKey) {
+	switch (eventKey) {
+		case "x":
+		case "*":
+			return "×";
+	
+		case "/":
+			return "÷";
+	
+		case "-":
+			return "–";
+	
+		case "a":
+			return "+";
+			
+		case "p":
+			return "%";
+		
+		case "c":
+			return "C";
+		
+		case "i":
+			return "+/-";
+		
+		case "f":
+		case "!":
+			displayFactorial(activeNum.textContent);
+			break;
+
+		case ".":
+		case "%":
+		case "–":
+		case "÷":
+		case "+":
+		case "=":
+			return eventKey;
+		
+		default:
+			return;
+	}
+}
+
+function calculate(buttonText) {
+	switch (buttonText) {
+		case "C":
+		case "AC":
 			checkHalfClear() ? halfClear() : allClear();
 			break;
 
-		case "invert":
+		case "+/-":
 			activeNum.textContent = +(activeNum.textContent * -1).toFixed(fixedLimit);
 			break;
-			
-			case "percent":
+
+		case "%":
 			activeNum.textContent = +(activeNum.textContent / 100).toFixed(fixedLimit);
 			break;
 
-		case "decimal":
+		case ".":
 			clearBtn.textContent = "C";
-			updateActiveNum(button.textContent);
+			updateActiveNum(buttonText);
 			break;
 
-		case "equals":
-			runEquals();
+		case "=":
+			checkRepeatEquals();
 			break;
 
-		case "divide":
-		case "multiply":
-		case "subtract":
-		case "add":
-			fireOperator(button);
+		case "÷":
+		case "×":
+		case "–":
+		case "+":
+			fireOperator(buttonText);
 			break;
-	
+
 		default:
-			if (activeNum.textContent === "0" || 
-				activeNum.textContent === errorMessage) {
-					activeNum.textContent = "";
-			}
+			if (activeNum.textContent === "0") activeNum.textContent = "";
 			clearBtn.textContent = "C";
-			updateActiveNum(button.textContent);
+			updateActiveNum(buttonText);
 			break;
 	};
 }
 
-function runEquals() {
-	expression.textContent += activeNum.textContent;
+function checkRepeatEquals() {
+	if (+activeNum.textContent === 0) return;
+	const operatorPresent = OPERATORS.some(operator => {
+		return expression.textContent.includes(operator)
+	});
+	const bIsEmpty = expression.textContent.split(" ").includes("");
+	if (bIsEmpty && operatorPresent) {
+		runEquals(true);
+	} else {
+		let expArray = expression.textContent.split(" ");
+		expArray.splice(0, 1, activeNum.textContent);
+		expression.textContent = expArray.join(" ");
+		runEquals(false);
+	}
+}
+
+function runEquals(addToEnd) {
+	if (addToEnd) expression.textContent += activeNum.textContent;
 	activeNum.textContent = operate(expression.textContent);
 }
 
@@ -102,25 +177,35 @@ function operate(str) {
 	};
 
 	if (!methods[opr] || isNaN(a) || isNaN(b)) {
-		expression.textContent = "";
-		return errorMessage;
+		return;
 	}
 	const answer = methods[opr](a, b);
 	return +(answer + Number.EPSILON).toFixed(fixedLimit);
 }
 
-function fireOperator(button) {
+function fireOperator(buttonText) {
 	const operatorPresent = OPERATORS.some(operator => {
 		return expression.textContent.includes(operator)
 	});
 	const bIsEmpty = expression.textContent.split(" ").includes("");
 	if (bIsEmpty && operatorPresent) {
-		runEquals();
+		runEquals(true);
+		updateExpression(buttonText);
+		activeNum.textContent = "";
 	} else {
-		updateExpression(button.textContent);
+		updateExpression(buttonText);
 	}
 }
 
+function displayFactorial(value) {
+	expression.textContent = `${value}!`
+	activeNum.textContent = factorial(value);
+}
+
+function factorial(num) {
+	num = Math.floor(Math.abs(num));
+	return num === 0 ? 1 : num * factorial(num -1);
+};
 
 // function testCalculations() {
 // 	for (let index = 0; index < 10; index++) {

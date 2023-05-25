@@ -21,7 +21,7 @@ body {
 	height: 100vh;
 	margin: unset;
 	padding: 0 8px;
-	background-color: darkgray;
+	background-image: linear-gradient(#9faeb4, #ceeaf3);
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 /* ------------------ Header ------------------ */
@@ -94,7 +94,7 @@ header {
 		width: 26px;
 		left: 4px;
 		bottom: 4px;
-		background-color: rgb(255 171 0);
+		background-color: #8ec910;
 		-webkit-transition: .4s;
 		transition: .4s;
 	}
@@ -126,21 +126,22 @@ main {
 	justify-content: center;
 }
 #calculator {
-	justify-content: space-between;
-	background-color: black;
-	height: 460px;
-	width: 300px;
-	border: 4px outset gray;
-	border-radius: 10px;
-	box-shadow: 4px 4px 13px 2px #393939;
+    justify-content: space-between;
+    background-color: #0e1618;
+    height: 465px;
+    width: 300px;
+    border: 4px outset gray;
+    border-radius: 10px;
+    box-shadow: 4px 4px 13px 2px #393939;
 }
 
 #screen {
-	justify-content: center;
-	background-color: #c9f8f8;
-	height: 110px;
-	margin: 10px;
-	padding: 0 10px;
+    justify-content: center;
+    background-color: #b5ea47;
+    height: 110px;
+    margin: 10px;
+    padding: 0 10px;
+	border-radius: 10px;
 }
 
 	#expression {
@@ -157,7 +158,10 @@ main {
 #button-container {
 	justify-content: space-between;
 	height: 100%;
-	padding: 10px 15px;
+	padding: 10px 10px;
+	background-color: #22282a;
+    border-radius: 32px;
+    margin: 5px;
 }
 
 	.button-row {
@@ -166,21 +170,21 @@ main {
 	}
 
 	#button-container .button-row :last-child {
-		background-color: rgb(255 171 0);
-		color: white;
+		background-color: #fbfdfd;
+		color: #0e1618;
 		font-size: 30px;
 	}
 
 	#button-container .button-row :last-child:hover {
-		background-color: rgb(250, 192, 76);
+		background-color: #d8d9d9;
 	}
 
 		.button {
 			justify-content: center;
 			align-items: center;
-			background-color: rgb(81, 81, 81);
-			color: white;
-			border-radius: 50px;
+			background-color: #b5ec3f;
+			color: #0e1618;
+			border-radius: 20px;
 			width: 60px;
 			height: 60px;
 			font-size: 25px;
@@ -188,18 +192,20 @@ main {
 		}
 
 		.button:hover {
-			background-color: rgb(113, 113, 113);
-			scale: 1.02;
+			background-color: #cfef8d;
+			scale: 1.01;
 			transition: 0.2s;
+			transform: translateY(-1px);
+			box-shadow: 0px 2px 2px 1px black;
 		}
 
 		#rowAC .button {
-			background-color: rgb(206, 206, 206);
-			color: black;
+		    background-color: #a9e9ff;
+    		color: #0e1618;
 		}
 
 		#rowAC .button:hover {
-			background-color: rgb(236, 236, 236);
+			background-color: #ceeaf3;
 		}
 		
 		#zero {
