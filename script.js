@@ -96,7 +96,9 @@ function calculate(buttonText) {
 
 		case ".":
 			clearBtn.textContent = "C";
-			updateActiveNum(buttonText, "add");
+			if (!activeNum.textContent.includes(".")){
+				updateActiveNum(buttonText, "add");
+			}
 			break;
 
 		case "!":
@@ -128,7 +130,8 @@ function checkRepeatEquals() {
 		return expression.textContent.includes(operator)
 	});
 	const bIsEmpty = expression.textContent.split(" ").includes("");
-	if (bIsEmpty && operatorPresent) {
+	if (!operatorPresent) return;
+	else if (bIsEmpty && operatorPresent) {
 		runEquals(true);
 	} else {
 		let expArray = expression.textContent.split(" ");
