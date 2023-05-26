@@ -1,10 +1,20 @@
 const activeNum = document.querySelector("#active-num");
 const expression = document.querySelector("#expression");
 const clearBtn = document.querySelector("#clear");
+const darkMode = document.querySelector(".switch");
 
 let fixedLimit = 8;
+let darkModeToggle = false;
 
 const OPERATORS = ["÷", "×", "–", "+"]
+
+
+// darkMode.addEventListener("click", toggleDarkMode)
+
+// function toggleDarkMode() {
+// 	darkModeToggle = !darkModeToggle;
+// 	console.log(darkModeToggle);
+// }
 
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {
