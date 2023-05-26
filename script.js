@@ -2,7 +2,7 @@ const activeNum = document.querySelector("#active-num");
 const expression = document.querySelector("#expression");
 const clearBtn = document.querySelector("#clear");
 
-let fixedLimit = 10;
+let fixedLimit = 8;
 
 const OPERATORS = ["÷", "×", "–", "+"]
 
@@ -61,16 +61,17 @@ function convertKeyToButtonText(eventKey) {
 			return "+/-";
 		
 		case "f":
-		case "!":
-			displayFactorial(activeNum.textContent);
+			return "!"
 			break;
-
+			
+		case "!":
 		case ".":
 		case "%":
 		case "–":
 		case "÷":
 		case "+":
 		case "=":
+		case "0":
 			return eventKey;
 		
 		default:
@@ -95,7 +96,11 @@ function calculate(buttonText) {
 
 		case ".":
 			clearBtn.textContent = "C";
-			updateActiveNum(buttonText);
+			updateActiveNum(buttonText, "add");
+			break;
+
+		case "!":
+			displayFactorial(activeNum.textContent);
 			break;
 
 		case "=":
@@ -112,7 +117,7 @@ function calculate(buttonText) {
 		default:
 			if (activeNum.textContent === "0") activeNum.textContent = "";
 			clearBtn.textContent = "C";
-			updateActiveNum(buttonText);
+			updateActiveNum(buttonText, "add");
 			break;
 	};
 }
@@ -135,14 +140,27 @@ function checkRepeatEquals() {
 
 function runEquals(addToEnd) {
 	if (addToEnd) expression.textContent += activeNum.textContent;
-	activeNum.textContent = operate(expression.textContent);
+	updateActiveNum(operate(expression.textContent), "set");
 }
 
-function updateActiveNum(value) {
-	activeNum.textContent += value
+function updateActiveNum(value, setAdd) {
+	if (value.toString().length > 14 && value < 9999999999) {
+		value = value.toFixed(fixedLimit);
+	} else if (value.toString().length > 14 && value > 9999999999) {
+		value = value.toExponential(fixedLimit);
+	}
+	if (setAdd ===  "set") {
+		activeNum.textContent = value
+	}
+	if (setAdd ===  "add") {
+		activeNum.textContent += value
+	}
 }
 
 function updateExpression(value) {
+	if (value.toString().length > 14) {
+		expression.style.fontSize = "10px";
+	}
 	expression.textContent = "";
 	expression.textContent += `${activeNum.textContent} ${value} `;
 	activeNum.textContent = "0";
@@ -199,7 +217,7 @@ function fireOperator(buttonText) {
 
 function displayFactorial(value) {
 	expression.textContent = `${value}!`
-	activeNum.textContent = factorial(value);
+	updateActiveNum(factorial(value), "set");
 }
 
 function factorial(num) {

@@ -5,6 +5,8 @@
 /* ----------------------------------------------- */
 /* ------------------ Utilities ------------------ */
 /* ----------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 .flex {
 	display: flex;
 }
@@ -128,36 +130,38 @@ main {
 #calculator {
     justify-content: space-between;
     background-color: #0e1618;
-    height: 465px;
-    width: 300px;
+    /* height: 465px;
+    width: 300px; */
     border: 4px outset gray;
     border-radius: 10px;
     box-shadow: 4px 4px 13px 2px #393939;
 }
 
 #screen {
-    justify-content: center;
+    justify-content: space-between;
+	gap: 10px;
     background-color: #b5ea47;
-    height: 110px;
     margin: 10px;
-    padding: 0 10px;
+    padding: 15px;
 	border-radius: 10px;
+	word-wrap: break-word;
 }
 
 	#expression {
-		height: 30px;
+		min-height: 30px;
 		padding-left: 10px;
 		font-size: 25px;
 	}
 	#active-num {
 		align-self: flex-end;
-		height: 45px;
+		min-height: 45px;
 		font-size: 38px;
 	}
 
 #button-container {
 	justify-content: space-between;
-	height: 100%;
+	height: 335px;
+    width: 270px;
 	padding: 10px 10px;
 	background-color: #22282a;
     border-radius: 32px;
@@ -206,10 +210,6 @@ main {
 
 		#rowAC .button:hover {
 			background-color: #ceeaf3;
-		}
-		
-		#zero {
-			width: 130px;
 		}
 		
 
