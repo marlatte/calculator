@@ -25,6 +25,12 @@ body {
 	background-image: linear-gradient(#9faeb4, #ceeaf3);
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.dark {
+	background-image: linear-gradient(#7b8182, #131515);
+	color: #eef0f3;
+}
+
 /* ------------------ Header ------------------ */
 header {
 	justify-content: space-between;
@@ -36,25 +42,6 @@ header {
 		font-weight: 700;
 		margin: 20px;
 	}
-
-	/* .dark{
-		background-color: black;
-		color: #cccccc;
-	}
-
-	.dark .button{
-		background-color: #37474F;
-		border-color: #cccccc;
-	}
-
-	.dark .calculator{
-		background-color: black;
-		border: 5px solid #cccccc;
-	}
-
-	.dark .display{
-		background-color: #37474F;
-	} */
 
 	#dark-mode {
 		align-items: center;
@@ -129,12 +116,17 @@ main {
 #calculator {
     justify-content: space-between;
     background-color: #0e1618;
-    /* height: 465px;
-    width: 300px; */
+    /* height: 465px; */
+    width: 300px;
     border: 4px outset gray;
     border-radius: 10px;
     box-shadow: 4px 4px 13px 2px #393939;
 }
+
+	.dark #calculator {
+		background-color: rgb(211, 211, 211);
+		border: 4px outset #eeeeee;
+	}
 
 #screen {
     justify-content: space-between;
@@ -143,8 +135,13 @@ main {
     margin: 10px;
     padding: 15px;
 	border-radius: 10px;
-	word-wrap: break-word;
+	overflow-wrap: anywhere;
 }
+
+	.dark #screen {
+		background-color: #0e1618;
+		color: #a1eb08;
+	}
 
 	#expression {
 		min-height: 30px;
@@ -167,19 +164,13 @@ main {
     margin: 5px;
 }
 
+	.dark #button-container {
+		background-color: #eef0f3;
+	}
+
 	.button-row {
 		align-items: center;
 		justify-content: space-between;
-	}
-
-	#button-container .button-row :last-child {
-		background-color: #fbfdfd;
-		color: #0e1618;
-		font-size: 30px;
-	}
-
-	#button-container .button-row :last-child:hover {
-		background-color: #d8d9d9;
 	}
 
 		.button {
@@ -193,24 +184,61 @@ main {
 			font-size: 25px;
 			font-weight: 700;
 		}
+			
+			.button:hover {
+				background-color: #cfef8d;
+				scale: 1.01;
+				transition: 0.2s;
+				transform: translateY(-1px);
+				box-shadow: 0px 2px 2px 1px black;
+			}
+		
+			.dark .button {
+				background-color: #22282a;
+				color: #b5ec3f;
+			}
 
-		.button:hover {
-			background-color: #cfef8d;
-			scale: 1.01;
-			transition: 0.2s;
-			transform: translateY(-1px);
-			box-shadow: 0px 2px 2px 1px black;
-		}
-
+				.dark .button:hover {
+					background-color: dimgray;
+				}
+		
 		#rowAC .button {
 		    background-color: #a9e9ff;
     		color: #0e1618;
 		}
 
-		#rowAC .button:hover {
-			background-color: #ceeaf3;
-		}
+			#rowAC .button:hover {
+				background-color: #ceeaf3;
+			}
+
+			.dark #rowAC .button {
+				background-color: #0e1618;
+				color: #a9e9ff;
+			}
+
+				.dark #rowAC .button:hover {
+					background-color: dimgray;
+				}
 		
+		#button-container .button-row :last-child {
+			background-color: #fbfdfd;
+			color: #0e1618;
+			font-size: 30px;
+		}
+
+			#button-container .button-row :last-child:hover {
+				background-color: #d8d9d9;
+			}
+
+			.dark #button-container .button-row :last-child {
+				background-color: #0e1618;
+				color: #fbfdfd;
+			}
+
+				.dark #button-container .button-row :last-child:hover {
+					background-color: dimgray;
+				}
+			
 
 /* ------------------ Footer ------------------ */
 footer {
