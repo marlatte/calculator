@@ -126,6 +126,7 @@ main {
 	.dark #calculator {
 		background-color: rgb(211, 211, 211);
 		border: 4px outset #eeeeee;
+		box-shadow: 4px 4px 13px 2px #0e1618;
 	}
 
 #screen {
@@ -190,7 +191,6 @@ main {
 				scale: 1.01;
 				transition: 0.2s;
 				transform: translateY(-1px);
-				box-shadow: 0px 2px 2px 1px black;
 			}
 		
 			.dark .button {
@@ -257,8 +257,11 @@ footer {
 		color: black;
 	}
 
+		.dark .fa-github {
+			color: #eef0f3;
+		}
+
 	.fa-github:hover {
-		color: black;
 		transition: transform 0.4s ease-in-out;
 		transform: rotate(-360deg) scale(1.3);
 	}
