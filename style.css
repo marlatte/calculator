@@ -179,9 +179,10 @@ main {
 			align-items: center;
 			background-color: #b5ec3f;
 			color: #0e1618;
-			border-radius: 20px;
-			width: 60px;
-			height: 60px;
+			border-radius: calc(var(--button-w-h) / 3);
+			--button-w-h: 60px;
+			width: var(--button-w-h);
+			height: var(--button-w-h);
 			font-size: 25px;
 			font-weight: 700;
 		}
