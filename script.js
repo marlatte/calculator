@@ -20,8 +20,6 @@ function toggleDarkMode() {
 	darkModeText.textContent = newTheme;
 }
 
-toggleDarkMode();
-
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {
 	button.addEventListener("click", () => 	calculate(button.textContent));
