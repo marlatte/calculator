@@ -8,32 +8,19 @@ const activeNum = document.querySelector("#active-num");
 const expression = document.querySelector("#expression");
 const clearBtn = document.querySelector("#clear");
 
-let darkModeOn = false;
-
 const OPERATORS = ["÷", "×", "–", "+"]
 
 
 darkModeSwitch.addEventListener("mouseup", toggleDarkMode)
 
 function toggleDarkMode() {
-	darkModeOn = !darkModeOn;
-	if (darkModeOn) {
-		makeItDark();
-	} else {
-		letThereBeLight();
-	}
-	console.log(darkModeOn);
+	const root = document.documentElement;
+	const newTheme = root.className === 'light' ? 'dark' : 'light';
+	root.className = newTheme;
+	darkModeText.textContent = newTheme;
 }
 
-function makeItDark() {
-	darkModeText.textContent = "Dark Mode";
-	body.classList.add("dark");
-}
-
-function letThereBeLight() {
-	darkModeText.textContent = "Light Mode";
-	body.classList.remove("dark");
-}
+toggleDarkMode();
 
 const buttons = document.querySelectorAll(".button");
 buttons.forEach(button => {

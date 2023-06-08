@@ -2,6 +2,58 @@
 	border: 1px solid red;
 } */
 
+:root {
+	--off-black: #0e1618;
+}
+
+:root.light {
+	--background-gradient: linear-gradient(#9faeb4, #ceeaf3);
+	--header-text-color: black;
+
+	--calc-background: var(--off-black);
+	--calc-border: 4px outset gray;
+	--calc-shadow: 4px 4px 13px 2px #393939;
+
+	--screen-background: #b5ea47;;
+	--screen-text-color: black;
+
+	--button-container-background: #22282a;
+	--button-background:  #b5ec3f;
+	--button-background-hover: #cfef8d;
+	--button-text-color: var(--off-black);
+
+	--rowAC-background: #a9e9ff;
+	--rowAC-text-color: var(--off-black);
+	--rowAC-background-hover: #ceeaf3;
+
+	--opr-column-background: #fbfdfd;
+	--opr-column-background-hover: #d8d9d9;
+	--opr-column-text-color: var(--off-black);
+}
+
+:root.dark {
+	--background-gradient: linear-gradient(#7b8182, #131515);
+	--header-text-color: #eef0f3;
+
+	--calc-background: rgb(211, 211, 211);
+	--calc-border: 4px outset #eeeeee;
+	--calc-shadow: 4px 4px 13px 2px var(--off-black);
+
+	--screen-background: var(--off-black);
+	--screen-text-color: #a1eb08;
+
+	--button-container-background: #eef0f3;
+	--button-background:  #22282a;
+	--button-background-hover: dimgray;
+	--button-text-color: #b5ec3f;
+
+	--rowAC-background: var(--off-black);
+	--rowAC-text-color: #a9e9ff;
+
+	--opr-column-background: var(--off-black);
+	--opr-column-text-color: #fbfdfd;
+}
+
 /* ----------------------------------------------- */
 /* ------------------ Utilities ------------------ */
 /* ----------------------------------------------- */
@@ -22,13 +74,9 @@ body {
 	height: 100vh;
 	margin: unset;
 	padding: 0 8px;
-	background-image: linear-gradient(#9faeb4, #ceeaf3);
+	background-image: var(--background-gradient);
+	color: var(--header-text-color);
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.dark {
-	background-image: linear-gradient(#7b8182, #131515);
-	color: #eef0f3;
 }
 
 /* ------------------ Header ------------------ */
@@ -48,6 +96,10 @@ header {
 		font-size: 20px;
 		gap: 25px;
 		margin: 10px;
+	}
+
+	#dark-mode-text {
+		text-transform: capitalize;
 	}
 
 	.switch {
@@ -115,34 +167,24 @@ main {
 }
 #calculator {
     justify-content: space-between;
-    background-color: #0e1618;
+    background-color: var(--calc-background);
     /* height: 465px; */
     width: 300px;
-    border: 4px outset gray;
+    border: var(--calc-border);
     border-radius: 10px;
-    box-shadow: 4px 4px 13px 2px #393939;
+    box-shadow: var(--calc-shadow);
 }
-
-	.dark #calculator {
-		background-color: rgb(211, 211, 211);
-		border: 4px outset #eeeeee;
-		box-shadow: 4px 4px 13px 2px #0e1618;
-	}
 
 #screen {
     justify-content: space-between;
 	gap: 10px;
-    background-color: #b5ea47;
+    background-color: var(--screen-background);
+	color: var(--screen-text-color);
     margin: 10px;
     padding: 15px;
 	border-radius: 10px;
 	overflow-wrap: anywhere;
 }
-
-	.dark #screen {
-		background-color: #0e1618;
-		color: #a1eb08;
-	}
 
 	#expression {
 		min-height: 30px;
@@ -160,14 +202,10 @@ main {
 	height: 335px;
     width: 270px;
 	padding: 10px 10px;
-	background-color: #22282a;
+	background-color: var(--button-container-background);
     border-radius: 32px;
     margin: 5px;
 }
-
-	.dark #button-container {
-		background-color: #eef0f3;
-	}
 
 	.button-row {
 		align-items: center;
@@ -175,12 +213,13 @@ main {
 	}
 
 		.button {
+			--button-w-h: 60px;
+
 			justify-content: center;
 			align-items: center;
-			background-color: #b5ec3f;
-			color: #0e1618;
+			background-color: var(--button-background);
+			color: var(--button-text-color);
 			border-radius: calc(var(--button-w-h) / 3);
-			--button-w-h: 60px;
 			width: var(--button-w-h);
 			height: var(--button-w-h);
 			font-size: 25px;
@@ -188,57 +227,30 @@ main {
 		}
 			
 			.button:hover {
-				background-color: #cfef8d;
+				background-color: var(--button-background-hover);
 				scale: 1.01;
 				transition: 0.2s;
 				transform: translateY(-1px);
 			}
 		
-			.dark .button {
-				background-color: #22282a;
-				color: #b5ec3f;
-			}
-
-				.dark .button:hover {
-					background-color: dimgray;
-				}
-		
 		#rowAC .button {
-		    background-color: #a9e9ff;
-    		color: #0e1618;
+		    background-color: var(--rowAC-background);
+    		color: var(--rowAC-text-color);
 		}
 
 			#rowAC .button:hover {
-				background-color: #ceeaf3;
+				background-color: var(--rowAC-background-hover, var(--button-background-hover));
 			}
-
-			.dark #rowAC .button {
-				background-color: #0e1618;
-				color: #a9e9ff;
-			}
-
-				.dark #rowAC .button:hover {
-					background-color: dimgray;
-				}
 		
 		#button-container .button-row :last-child {
-			background-color: #fbfdfd;
-			color: #0e1618;
+			background-color: var(--opr-column-background);
+			color: var(--opr-column-text-color);
 			font-size: 30px;
 		}
 
 			#button-container .button-row :last-child:hover {
-				background-color: #d8d9d9;
+				background-color: var(--opr-column-background-hover, var(--button-background-hover));
 			}
-
-			.dark #button-container .button-row :last-child {
-				background-color: #0e1618;
-				color: #fbfdfd;
-			}
-
-				.dark #button-container .button-row :last-child:hover {
-					background-color: dimgray;
-				}
 			
 
 /* ------------------ Footer ------------------ */
@@ -255,12 +267,8 @@ footer {
 		}
 
 	.fa-github {
-		color: black;
+		color: var(--header-text-color);
 	}
-
-		.dark .fa-github {
-			color: #eef0f3;
-		}
 
 	.fa-github:hover {
 		transition: transform 0.4s ease-in-out;
