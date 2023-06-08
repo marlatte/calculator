@@ -86,23 +86,27 @@ header {
 
 	h1 {
 		all: unset;
-		font-size: 2em;
+		font-size: 2rem;
 		font-weight: 700;
-		margin: 20px;
+		margin: 20px 0 0 20px;
 	}
 
 	#dark-mode {
 		align-items: center;
-		font-size: 20px;
-		gap: 25px;
+		justify-content: space-between;
+		width: 100px;
+		font-size: 1.3rem;
 		margin: 10px;
-	}
-
-	#dark-mode-text {
 		text-transform: capitalize;
 	}
 
+	#dark-mode>:first-child {
+		width: 50px;
+		text-align: center;
+	}
+
 	.switch {
+		flex-shrink: 0;
 		position: relative;
 		display: inline-block;
 		height: 60px;
@@ -131,7 +135,7 @@ header {
 		position: absolute;
 		content: "";
 		height: 26px;
-		width: 26px;
+		width: 75%;
 		left: 4px;
 		bottom: 30px;
 		background-color: #8ec910;
