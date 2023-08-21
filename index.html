@@ -1,60 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en"
+	  class="light">
+
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Calculator</title>
+	<meta http-equiv="X-UA-Compatible"
+		  content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet"
+		  href="style.css">
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Marlatte: Calculator</title>
 </head>
+
 <body class="flex column">
+	<svg display="none"
+		 xmlns="http://www.w3.org/2000/svg">
+		<symbol id="coffee"
+				viewBox="0 0 612 612">
+			<path
+				  d="M597.734,554.176h-169.26c27.259-17.524,49.499-42.178,64.065-71.329h46.692c38.937,0,70.615-31.678,70.615-70.615 s-31.678-70.615-70.615-70.615h-27.781v-35.664c0-7.88-6.388-14.266-14.266-14.266h-382.37c-7.878,0-14.266,6.385-14.266,14.266 v96.702c0,63.548,33.122,119.47,82.978,151.522H14.266C6.388,554.176,0,560.562,0,568.442s6.388,14.266,14.266,14.266h266.338 h50.795h266.336c7.878,0,14.266-6.385,14.266-14.266S605.612,554.176,597.734,554.176z M539.233,370.148 c23.205,0,42.084,18.879,42.084,42.084c0,23.205-18.879,42.084-42.084,42.084h-35.37c4.916-16.374,7.589-33.71,7.589-51.662 v-32.506H539.233z M213.898,137.092c22.711-22.711,22.711-59.665,0-82.379l-1.067-1.067c-5.572-5.569-5.572-14.602,0-20.172 c5.572-5.572,14.602-5.572,20.175,0l1.067,1.067c33.833,33.833,33.833,88.89,0,122.725c-11.002,11.002-17.059,25.627-17.059,41.188 s6.06,30.186,17.059,41.191c5.572,5.569,5.572,14.602,0,20.172c-2.785,2.788-6.437,4.18-10.089,4.18 c-3.652,0-7.301-1.392-10.089-4.18c-16.391-16.388-25.416-38.181-25.416-61.363C188.482,175.273,197.509,153.48,213.898,137.092z M296.476,137.092c11.002-11.002,17.062-25.63,17.062-41.191s-6.06-30.186-17.062-41.191l-1.067-1.067 c-5.572-5.569-5.572-14.602,0-20.172c5.572-5.572,14.602-5.572,20.175,0l1.067,1.067c16.391,16.388,25.419,38.184,25.419,61.363 s-9.027,44.974-25.419,61.363c-11.002,11.002-17.059,25.627-17.059,41.188s6.06,30.186,17.059,41.191 c5.572,5.569,5.572,14.602,0,20.172c-2.785,2.788-6.437,4.18-10.089,4.18c-3.652,0-7.301-1.392-10.089-4.18 c-16.391-16.388-25.416-38.181-25.416-61.363C271.057,175.273,280.085,153.48,296.476,137.092z M379.055,137.089 c22.708-22.708,22.708-59.662,0-82.376l-1.067-1.067c-5.572-5.569-5.572-14.602,0-20.172c5.572-5.572,14.602-5.572,20.175,0 l1.067,1.067c33.833,33.833,33.833,88.89,0,122.725c-11.002,11.002-17.062,25.627-17.062,41.188s6.06,30.186,17.059,41.188 c5.572,5.572,5.572,14.605,0,20.175c-2.785,2.788-6.437,4.18-10.089,4.18c-3.652,0-7.301-1.392-10.086-4.177 c-16.391-16.391-25.419-38.184-25.419-61.365C353.636,175.273,362.663,153.48,379.055,137.089z">
+			</path>
+		</symbol>
+		<symbol id="dark-mode-icon"
+				viewBox="0 0 24 24">
+			<path
+				  d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z">
+			</path>
+		</symbol>
+	</svg>
 	<header class="flex">
+		<svg class="icon">
+			<use xlink:href="#coffee"></use>
+		</svg>
 		<h1>Calculator</h1>
-		<div id="dark-mode" class="flex">
+		<div id="dark-mode"
+			 class="flex">
 			<div><span id="dark-mode-text">Light</span> Mode</div>
 			<label class="switch">
 				<input type="checkbox">
-				<span class="slider round"></span>
+				<span class="slider round">
+					<svg class="icon">
+						<use xlink:href="#dark-mode-icon"></use>
+					</svg>
+				</span>
 			</label>
-		</div>	
+		</div>
 	</header>
 	<main class="flex">
-		<div id="calculator" class="flex column">
-			<div id="screen" class="flex column">
+		<div id="calculator"
+			 class="flex column">
+			<div id="screen"
+				 class="flex column">
 				<div id="expression"></div>
-				<div id="active-num" >0</div>
+				<div id="active-num">0</div>
 			</div>
-			<div id="button-container" class="flex column">
-				<div id="rowAC" class="button-row flex">
-					<div id="clear" class="button flex">AC</div>
-					<div id="percent" class="button flex">%</div>
-					<div id="factorial" class="button flex">!</div>
-					<div id="divide" class="button flex">÷</div>
+			<div id="button-container"
+				 class="flex column">
+				<div id="rowAC"
+					 class="button-row flex">
+					<button id="clear"
+						 class="button flex">AC</button>
+					<button id="percent"
+						 class="button flex">%</button>
+					<button id="factorial"
+						 class="button flex">!</button>
+					<button id="divide"
+						 class="button flex">÷</button>
 				</div>
-				<div id="row7" class="button-row flex">
-					<div id="seven" class="button flex">7</div>
-					<div id="eight" class="button flex">8</div>
-					<div id="nine" class="button flex">9</div>
-					<div id="multiply" class="button flex">×</div>
+				<div id="row7"
+					 class="button-row flex">
+					<button id="seven"
+						 class="button flex">7</button>
+					<button id="eight"
+						 class="button flex">8</button>
+					<button id="nine"
+						 class="button flex">9</button>
+					<button id="multiply"
+						 class="button flex">×</button>
 				</div>
-				<div id="row4" class="button-row flex ">
-					<div id="four" class="button flex">4</div>
-					<div id="five" class="button flex">5</div>
-					<div id="six" class="button flex">6</div>
-					<div id="subtract" class="button flex">–</div>
+				<div id="row4"
+					 class="button-row flex ">
+					<button id="four"
+						 class="button flex">4</button>
+					<button id="five"
+						 class="button flex">5</button>
+					<button id="six"
+						 class="button flex">6</button>
+					<button id="subtract"
+						 class="button flex">–</button>
 				</div>
-				<div id="row1" class="button-row flex">
-					<div id="one" class="button flex">1</div>
-					<div id="two" class="button flex">2</div>
-					<div id="three" class="button flex">3</div>
-					<div id="add" class="button flex">+</div>
+				<div id="row1"
+					 class="button-row flex">
+					<button id="one"
+						 class="button flex">1</button>
+					<button id="two"
+						 class="button flex">2</button>
+					<button id="three"
+						 class="button flex">3</button>
+					<button id="add"
+						 class="button flex">+</button>
 				</div>
-				<div id="row0" class="button-row flex">
-					<div id="zero" class="button flex">0</div>
-					<div id="decimal" class="button flex">.</div>
-					<div id="invert" class="button flex">+/-</div>
-					<div id="equals" class="button flex">=</div>
+				<div id="row0"
+					 class="button-row flex">
+					<button id="zero"
+						 class="button flex">0</button>
+					<button id="decimal"
+						 class="button flex">.</button>
+					<button id="invert"
+						 class="button flex">+/-</button>
+					<button id="equals"
+						 class="button flex">=</button>
 				</div>
 			</div>
 		</div>
@@ -64,10 +122,13 @@
 			<div id="my-name">&copy; 2023 Walker Marlatt</div>
 			<div>The Odin Project</div>
 		</div>
-		<a href="https://github.com/marlatte" target="_blank">
-			<i class="fa fa-github" style="font-size:34px"></i>
+		<a href="https://github.com/marlatte"
+		   target="_blank">
+			<i class="fa fa-github"
+			   style="font-size:34px"></i>
 		</a>
 	</footer>
 	<script src="script.js"></script>
 </body>
+
 </html>
