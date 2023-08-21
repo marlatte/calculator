@@ -170,7 +170,7 @@ function updateActiveNum(value, setAdd) {
 		activeNum.textContent = +value
 	}
 	if (setAdd ===  "add") {
-		activeNum.textContent += +value
+		activeNum.textContent += value
 	}
 }
 

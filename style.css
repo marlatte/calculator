@@ -151,7 +151,6 @@ header {
 		width: 95%;
 		left: 2%;
 		bottom: 22%;
-		/* background-color: #8ec910; */
 		-webkit-transition: .4s;
 		transition: .4s;
 	}
@@ -201,6 +200,7 @@ main {
     padding: 15px;
 	border-radius: 10px;
 	overflow-wrap: anywhere;
+	font-family: monospace;
 }
 
 	#expression {
